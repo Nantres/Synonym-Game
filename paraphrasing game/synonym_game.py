@@ -5,11 +5,8 @@ from wordhoard import Synonyms, Definitions
 from PyDictionary import PyDictionary
 import os
 
-#nltk.download('words')
-
 def generate_random_word():
-    #with open('wws.txt') as f:
-    with open('wbf/wbf_wws.txt') as f:
+    with open('wbf/wbf_wws.txt') as f:                       # opens the txt file with all the words
         words = f.read().splitlines()
         word = random.choice(words)
     return word
@@ -19,23 +16,9 @@ if __name__ == "__main__":
         return generate_random_word()
     
 def get_synonyms(word):
-    #synonyms = []
-
-    #for syn in wordnet.synsets(word):
-    #      for l in syn.lemmas():
-    #           synonyms.append(l.name())
-    #return(set(synonyms))
-
     synonyms = Synonyms(search_string=word)
     synonym_results = synonyms.find_synonyms()
     return synonym_results
-
-#def get_synonyms2(word):
-#    synonyms = []
-#    for syn in wordnet.synsets(word):
-#          for l in syn.lemmas():
-#               synonyms.append(l.name())
-#    return(set(synonyms))
 
 total_correct = 0
 total_wrong = 0
@@ -43,11 +26,8 @@ total_wrong = 0
 def find_word(not_found,total_correct,total_wrong):
     while not_found:
         word = random_word()
-        #results = Synonyms(search_string=word, output_format='json').find_synonyms()
-        #list = json.loads(results)[word]["synonyms"]
         try:
             syn_list = get_synonyms(word)
-            #list2 = get_synonyms2(word)
             not_found = False
             if len(syn_list) <= 5:
                 not_found = True
@@ -98,18 +78,7 @@ def find_word(not_found,total_correct,total_wrong):
                 output += ' ' * ((((len(output) // terminal_size) + 1) * terminal_size) - len(output)) + '      '
             output += f'| {syn_list[i]} '
         print(output)
-        
-        #print(f'synonyms of {word}: {list2}')
 
         find_word(True,total_correct,total_wrong)
 
 find_word(True,total_correct,total_wrong)
-
-#shorten word list: use more common words, or find another word list
-#finish analyser with synoynm saving feature
-#feature to adjust
-#if have synonym keep the word
-
-#one is actually used words with synonyms by frequency
-# - how it's derived: wbf list > proper words from dictionary 
-#one is all words with synonyms
