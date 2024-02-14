@@ -1,7 +1,6 @@
-import nltk
 from nltk.corpus import wordnet, words
 import random
-from wordhoard import Synonyms, Definitions
+from wordhoard import Synonyms
 from PyDictionary import PyDictionary
 import os
 
