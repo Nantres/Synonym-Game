@@ -13,6 +13,7 @@ You are given a word and you have to input a synonym of that word. It's basicall
 - more frequently used words at the top:
 
   ![image](https://github.com/Nantres/synonym-game/assets/148534700/c38e8ccd-aaf2-4d25-9cd1-9623cfa2a2bd)
+- you need the wbf folder with the python file in the same folder for it to work
 
 ### limitations:
 - some words used are too difficult and are not commonly used, but it's difficult to filter them out.
